@@ -1,0 +1,123 @@
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGuid = {5444534f-1100-2008-0218-080111008219}
+provider=%ODM%
+LayoutFile=layout.inf
+CatalogFile=dstusb.cat
+
+[ClassInstall32]
+Addreg = DSOReg
+
+[ClassInstall]
+Addreg = DSOReg
+
+[ClassInstall32.ntamd64]
+Addreg = DSOReg
+
+[ClassInstall32.ntia64]
+Addreg = DSOReg
+
+[DSOReg]
+HKR, , , 0, %ClassName%
+HKR, , Icon, , -5
+HKR, , NoInstallClass, , 1
+
+[Manufacturer]
+%ODM%=ODM
+%ODM%=ODM,NTia64
+%ODM%=ODM,NTamd64
+
+
+[ODM]
+%USB\VID_049f&PID_505a.DeviceDesc%=DSTDSO.Dev, USB\VID_049f&PID_505a
+
+[ODM.NTamd64]
+%USB\VID_049f&PID_505a.DeviceDesc% = DSTDSO.Dev.NTamd64, USB\VID_049f&PID_505a
+
+[ODM.NTia64]
+%USB\VID_049f&PID_505a.DeviceDesc% = DSTDSO.Dev.NTia64, USB\VID_049f&PID_505a
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+DSTDSO.Files.Ext = 10,System32\Drivers
+DSTDSO.Files.Ext.amd64 = 10,System32\Drivers
+DSTDSO.Files.Ext.ia64 = 10,System32\Drivers
+
+[DSTDSO.Dev]
+CopyFiles=DSTDSO.Files.Ext
+AddReg=DSTDSO.AddReg
+
+[DSTDSO.Dev.NT]
+CopyFiles=DSTDSO.Files.Ext
+AddReg=DSTDSO.AddReg
+
+[DSTDSO.Dev.NTamd64]
+CopyFiles = DSTDSO.Files.Ext.amd64
+AddReg    = DSTDSO.amd64.AddReg
+
+[DSTDSO.Dev.NTia64]
+CopyFiles = DSTDSO.Files.Ext.I64
+AddReg    = DSTDSO.ia64.AddReg
+
+[DSTDSO.Dev.NT.Services]
+Addservice = DSTDSO, 0x00000002, DSTDSO.AddService
+
+[DSTDSO.Dev.NTamd64.Services]
+AddService = DSTDSO, 2, DSTDSO.AddServiceAmd64
+
+[DSTDSO.Dev.NTia64.Services]
+AddService = DSTDSO, 2, DSTDSO.AddServiceIA64
+
+[DSTDSO.AddService]
+DisplayName    = %DSTDSO.SvcDesc%
+ServiceType    = 1                  
+StartType      = 3                  
+ErrorControl   = 1                  
+ServiceBinary  = %10%\System32\Drivers\dstusbx86.SYS
+LoadOrderGroup = Base
+
+[DSTDSO.AddServiceAmd64]
+DisplayName   = %DSTDSO.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\dstusbamd64.SYS
+
+[DSTDSO.AddServiceIA64]
+DisplayName   = %DSTDSO.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\dstusbia64.SYS
+
+[DSTDSO.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,dstusbx86.SYS
+
+[DSTDSO.amd64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,dstusbamd64.SYS
+
+[DSTDSO.ia64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,dstusbia64.SYS
+
+
+[DSTDSO.Files.Ext]
+dstusbx86.SYS
+
+[DSTDSO.Files.Ext.amd64]
+dstusbamd64.SYS
+
+[DSTDSO.Files.Ext.I64]
+dstusbia64.SYS
+
+
+[Strings]
+ClassName="DSO Measurement Device"
+ODM="ODM "
+USB\VID_049f&PID_505a.DeviceDesc="DSO Measurement Device"
+DSTDSO.SvcDesc="DSO Measurement Device"

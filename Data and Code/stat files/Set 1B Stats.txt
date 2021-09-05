@@ -1,0 +1,26 @@
+Type     	Value
+Frequency   	1.2987 kHz
+Period    	770.0 us
+Vavg     	-88.4 uv
+Vpp      	2.64 mv
+Vrms     	894 uv
+Vmin     	-1.44 mv
+Vmax     	1.20 mv
+Rise Time   	250.0 us
+Fall Time   	210.0 us
+Pos.PulseWidth	390.0 us
+Neg.PulseWidth	380.0 us
+Pos.Duty   	 51 %
+Neg.Duty   	 49 %
+Vamp     	2.48 mv
+Vtop     	1.12 mv
+Vbase     	-1.36 mv
+Vover     	3.23 %
+Vpre     	3.23 %
+Vtoptime   	110.0 us
+Vbasetime   	40.00 us
+Vrisewidth  	260.0 us
+Vfallwidth  	260.0 us
+CMean     	-84.2 uv
+VCrms     	891 uv
+Slew rate   	8.64 uv/us
